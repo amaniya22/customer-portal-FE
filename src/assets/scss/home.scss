@@ -7,7 +7,7 @@
     }
 
     .home-title {
-        @include font-properties(700, 64px);
+        @include font-properties(900, 64px);
 
         .home-title-highlight {
             color: $dark-blue-1;

@@ -2,17 +2,17 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/index.jsx";
 import SignUp from "./pages/SignUp/index.jsx";
+import PATHS from "./routes/path.js"
 import "./index.css";
-import LoginForm from "./pages/SignUp/LoginForm/loginForm.jsx";
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/auth">
-          <Route exact path="/auth/sign-up" element={<SignUp />} />
-          <Route exact path="/auth/login" element={<SignUp />} />
+        <Route path={PATHS.HOME} element={<Home />} />
+        <Route path={PATHS.AUTH}>
+          <Route exact path={PATHS.SIGNUP} element={<SignUp />} />
+          <Route exact path={PATHS.LOGIN} element={<SignUp />} />
         </Route>
       </Routes>
     </div>

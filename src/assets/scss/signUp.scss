@@ -1,0 +1,28 @@
+@use './variables.scss' as *;
+@use './mixins.scss' as *;
+
+.auth-pg-container {
+    .auth-pg-content {
+        .auth-form-section {
+            box-shadow: 0px 1px 4px $black-opacity-25;
+
+            .auth-form-div {
+                .auth-form-content {
+                    filter: none !important;
+    
+                    .auth-form-title {
+                        @include font-properties(900, 48px);
+                    }
+                }
+            }
+    
+            .auth-img-div {
+                width: 50%;
+    
+                .auth-img {
+                    height: 575px !important;
+                }
+            }
+        }
+    }
+}
