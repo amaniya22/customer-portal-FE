@@ -6,6 +6,11 @@
     background-color: $dark-blue-2;
     @include font-properties(500, 16px);
 
+    &:focus,
+    &:focus-visible {
+        outline: none;
+    }
+
     &:hover {
         background-color: lighten($dark-blue-2, 10%);
     }
@@ -16,6 +21,11 @@
     border-color: $dark-blue-2;
     color: $dark-blue-2;
     @include font-properties(500, 16px);
+
+    &:focus,
+    &:focus-visible {
+        outline: none;
+    }
 
     &:hover {
         border-color: lighten($dark-blue-2, 10%);

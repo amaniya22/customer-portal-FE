@@ -9,19 +9,42 @@
             .auth-form-div {
                 .auth-form-content {
                     filter: none !important;
-    
+
+                    .auth-form-item {
+
+                        .ant-form-item-control-input input {
+                            height: 32px;
+                        }
+
+                        .auth-form-link {
+                            color: $dark-blue-2;
+                            @include font-properties(500, 14px);
+
+                            &:hover {
+                                color: lighten($dark-blue-2, 10%);
+                                text-decoration: underline
+                            }
+                        }
+
+                        .checkbox-text,
+                        label {
+                            @include font-properties(400, 14px);
+                        }
+                    }
+
                     .auth-form-title {
                         @include font-properties(900, 48px);
                     }
+
+                    .login-btn {
+                        place-content: center;
+                    }
                 }
             }
-    
+
             .auth-img-div {
+                background-color: $dark-blue-3;
                 width: 50%;
-    
-                .auth-img {
-                    height: 575px !important;
-                }
             }
         }
     }

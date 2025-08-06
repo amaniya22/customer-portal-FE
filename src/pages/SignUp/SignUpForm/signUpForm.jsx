@@ -1,101 +1,95 @@
-import { Form, Input } from "antd";
 import React from "react";
+import { Form, Input } from "antd";
+import {
+  LockOutlined,
+  MailOutlined,
+  UserOutlined,
+  IdcardOutlined,
+} from "@ant-design/icons";
+import { Link } from "react-router-dom";
+import Button from "../../../components/buttons";
+import PATHS from "../../../routes/path";
 
 const SignUpForm = () => {
   return (
-    <div className="auth-form-content mt-16">
-      <p className="m-0 text-black auth-form-title">Sign Up</p>
+    <div className="auth-form-content mt-10 flex items-center flex-col w-100">
+      <p className="m-0 text-black auth-form-title mb-4 text-center">Sign Up</p>
 
-      {/* <form>
-
-        <InputFields
-          labelText="Enter Email"
-          inputType="email"
-          placeholderValue="Enter email"
-        />
-
-        <InputFields
-          labelText="Create Password"
-          inputType="password"
-          placeholderValue="Enter password"
-        />
-
-        <InputFields
-          labelText="Re-enter Password"
-          inputType="password"
-          placeholderValue="Confirm username"
-        />
-      </form> */}
-
-      <Form className="gap-8 flex w-100 flex-col">
+      <Form layout="vertical" className="w-100 flex-col">
         <Form.Item
-          layout="vertical"
           label="Enter Username"
           name="username"
           rules={[{ required: true }]}
-          labelCol={{ span: 24 }}
-          wrapperCol={{ span: 24 }}
+          className="auth-form-item"
         >
-          <Input />
+          <Input placeholder="Enter Username" prefix={<UserOutlined />} />
         </Form.Item>
 
         <Form.Item
-          layout="vertical"
           label="Enter First Name"
           name="fname"
           rules={[{ required: true }]}
-          labelCol={{ span: 24 }}
-          wrapperCol={{ span: 24 }}
+          className="auth-form-item"
         >
-          <Input />
+          <Input placeholder="Enter First Name" prefix={<IdcardOutlined />} />
         </Form.Item>
 
         <Form.Item
-          layout="vertical"
           label="Enter Last Name"
           name="lname"
           rules={[{ required: true }]}
-          labelCol={{ span: 24 }}
-          wrapperCol={{ span: 24 }}
+          className="auth-form-item"
         >
-          <Input />
+          <Input placeholder="Enter Last Name" prefix={<IdcardOutlined />} />
         </Form.Item>
 
         <Form.Item
-          layout="vertical"
           label="Enter Email"
           name="email"
           rules={[{ required: true }]}
-          labelCol={{ span: 24 }}
-          wrapperCol={{ span: 24 }}
+          className="auth-form-item"
         >
-          <Input />
+          <Input placeholder="Enter Email" prefix={<MailOutlined />} />
         </Form.Item>
 
-        <div className="flex w-100 gap-8">
+        <div className="flex justify-between w-100 gap-8">
           <Form.Item
-            layout="vertical"
             label="Create Password"
             name="password"
             rules={[{ required: true }]}
-            labelCol={{ span: 24 }}
-            wrapperCol={{ span: 24 }}
+            className="auth-form-item"
           >
-            <Input />
+            <Input.Password
+              placeholder="Create New Password"
+              prefix={<LockOutlined />}
+            />
           </Form.Item>
 
           <Form.Item
-            layout="vertical"
             label="Re-enter Password"
             name="confirmPassword"
-            ß
             rules={[{ required: true }]}
-            labelCol={{ span: 24 }}
-            wrapperCol={{ span: 24 }}
+            className="auth-form-item"
           >
-            <Input />
+            <Input.Password
+              placeholder="Confirm Password"
+              prefix={<LockOutlined />}
+            />
           </Form.Item>
         </div>
+
+        <Form.Item className="text-center auth-form-item">
+          <Button
+            btnText="Sign Up"
+            className="btn-primary-blue rounded-md text-white w-100 my-4 flex justify-center"
+          />
+          Already have an account!{" "}
+          <Link to={PATHS.LOGIN}>
+            <a href="" className="auth-form-link">
+              Login now!
+            </a>
+          </Link>
+        </Form.Item>
       </Form>
     </div>
   );

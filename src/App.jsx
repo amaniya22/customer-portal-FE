@@ -13,6 +13,7 @@ function App() {
         <Route path={PATHS.AUTH}>
           <Route exact path={PATHS.SIGNUP} element={<SignUp />} />
           <Route exact path={PATHS.LOGIN} element={<SignUp />} />
+          <Route exact path={PATHS.FORGOTPASSWORD} element={<SignUp />} />
         </Route>
       </Routes>
     </div>
