@@ -7,7 +7,7 @@ import ForgotPassword from "./ForgotPassword/forgotPassword.jsx";
 
 const SignUp = () => {
   return (
-    <div className="auth-pg-container h-auto min-h-screen w-screen bg-white content-center">
+    <div className="auth-pg-container h-auto min-h-screen bg-white content-center">
       <div className="auth-pg-content p-16 flex">
         <div className="auth-form-section rounded-3xl flex">
           <div className="auth-img-div rounded-l-3xl content-center">
