@@ -1,11 +1,35 @@
 import React from "react";
 import { Checkbox, Flex, Form, Input } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { loginUserThunk } from "../../../redux/slices/userAuthSlice";
 import Button from "../../../components/buttons";
 import PATHS from "../../../routes/path";
 
 const LoginForm = () => {
+  const dispath = useDispatch();
+  const navigate = useNavigate();
+
+  const [form] = Form.useForm();
+
+  const handleSubmitLogForm = async () => {
+    try {
+      // gets all the form field values
+      const values = await form.validateFields();
+      const res = await dispath(loginUserThunk(values));
+
+      if (res.type?.endsWith("/fulfilled")) {
+        navigate(PATHS.DASHBOARD);
+      } 
+      else {
+        alert(res.payload?.message || "Login Failed");
+      }
+    } catch (err) {
+      console.log('Validation failed', err)
+    }
+  };
+
   return (
     <div className="auth-form-content mt-10 flex items-center flex-col w-100">
       <p className="m-0 mb-8 text-black auth-form-title">Login</p>
@@ -15,9 +39,10 @@ const LoginForm = () => {
         initialValues={{ remember: true }}
         layout="vertical"
         className="w-100"
+        form={form}
       >
         <Form.Item
-          label="Username or Email"
+          label="Username"
           name="username"
           rules={[{ required: true, message: "Please enter your Username!" }]}
           className="auth-form-item"
@@ -45,9 +70,9 @@ const LoginForm = () => {
               </Checkbox>
             </Form.Item>
             <Link to={PATHS.FORGOTPASSWORD}>
-              <a href="" className="auth-form-link">
+              <p className="auth-form-link m-0">
                 Forgot password
-              </a>
+              </p>
             </Link>
           </Flex>
         </Form.Item>
@@ -56,12 +81,13 @@ const LoginForm = () => {
           <Button
             btnText="Login"
             className="btn-primary-blue rounded-md text-white w-100 mb-4 flex justify-center"
+            onClickHandler={handleSubmitLogForm}
           />
           or{" "}
           <Link to={PATHS.SIGNUP}>
-            <a href="" className="auth-form-link">
+            <p className="auth-form-link m-0">
               Register now!
-            </a>
+            </p>
           </Link>
         </Form.Item>
       </Form>

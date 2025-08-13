@@ -6,16 +6,41 @@ import {
   UserOutlined,
   IdcardOutlined,
 } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useForm } from "antd/es/form/Form";
+import { registerUserThunk } from "../../../redux/slices/userAuthSlice";
 import Button from "../../../components/buttons";
 import PATHS from "../../../routes/path";
 
 const SignUpForm = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [form] = useForm();
+
+  const handleRegForm = async () => {
+    try {
+      const values = await form.validateFields();
+
+      const res = await dispatch(registerUserThunk(values));
+
+      if (res.type?.endsWith("/fulfilled")) {
+        console.log("Access token:", res.payload.accessToken);
+        navigate(PATHS.LOGIN);
+      } else {
+        alert(res.payload?.message || "Registration Failed");
+      }
+    } catch (err) {
+      console.log("Validation failed", err);
+    }
+  };
+
   return (
     <div className="auth-form-content mt-10 flex items-center flex-col w-100">
       <p className="m-0 text-black auth-form-title mb-4 text-center">Sign Up</p>
 
-      <Form layout="vertical" className="w-100 flex-col">
+      <Form layout="vertical" className="w-100 flex-col" form={form}>
         <Form.Item
           label="Enter Username"
           name="username"
@@ -27,7 +52,7 @@ const SignUpForm = () => {
 
         <Form.Item
           label="Enter First Name"
-          name="fname"
+          name="first name"
           rules={[{ required: true }]}
           className="auth-form-item"
         >
@@ -36,7 +61,7 @@ const SignUpForm = () => {
 
         <Form.Item
           label="Enter Last Name"
-          name="lname"
+          name="last name"
           rules={[{ required: true }]}
           className="auth-form-item"
         >
@@ -67,7 +92,7 @@ const SignUpForm = () => {
 
           <Form.Item
             label="Re-enter Password"
-            name="confirmPassword"
+            name="Confirm Password"
             rules={[{ required: true }]}
             className="auth-form-item"
           >
@@ -82,12 +107,11 @@ const SignUpForm = () => {
           <Button
             btnText="Sign Up"
             className="btn-primary-blue rounded-md text-white w-100 my-4 flex justify-center"
+            onClickHandler={handleRegForm}
           />
           Already have an account!{" "}
           <Link to={PATHS.LOGIN}>
-            <a href="" className="auth-form-link">
-              Login now!
-            </a>
+            <p className="auth-form-link m-0">Login now!</p>
           </Link>
         </Form.Item>
       </Form>

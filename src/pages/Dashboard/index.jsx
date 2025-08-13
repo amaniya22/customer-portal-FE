@@ -1,15 +1,20 @@
 import React from "react";
-import { useAuth } from "../../routes/authContext";
+import { useAuth } from "../../routes/authContext.jsx";
 
 const Dashboard = () => {
-  const { user } = useAuth();
+  const { user, isAdmin, isCustomer, loading } = useAuth();
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div>
-      {user && user.user_role === "Customer" ? (
+      {isCustomer ? (
         <h1>
           Hi {user.user_fname} {user.lname}
         </h1>
-      ) : user && user.user_role === "Admin" ? (
+      ) : isAdmin ? (
         <h1>
           Hi Admin {user.user_fname} {user.user_lname}
         </h1>
