@@ -44,7 +44,7 @@ const SignUpForm = () => {
         <Form.Item
           label="Enter Username"
           name="username"
-          rules={[{ required: true }]}
+          rules={[{ required: true, message: "Please enter your Username!" }]}
           className="auth-form-item"
         >
           <Input placeholder="Enter Username" prefix={<UserOutlined />} />
@@ -52,8 +52,8 @@ const SignUpForm = () => {
 
         <Form.Item
           label="Enter First Name"
-          name="first name"
-          rules={[{ required: true }]}
+          name="user_fname"
+          rules={[{ required: true, message: "Please enter your First Name!" }]}
           className="auth-form-item"
         >
           <Input placeholder="Enter First Name" prefix={<IdcardOutlined />} />
@@ -61,8 +61,8 @@ const SignUpForm = () => {
 
         <Form.Item
           label="Enter Last Name"
-          name="last name"
-          rules={[{ required: true }]}
+          name="user_lname"
+          rules={[{ required: true, message: "Please enter your Last Name!" }]}
           className="auth-form-item"
         >
           <Input placeholder="Enter Last Name" prefix={<IdcardOutlined />} />
@@ -70,8 +70,8 @@ const SignUpForm = () => {
 
         <Form.Item
           label="Enter Email"
-          name="email"
-          rules={[{ required: true }]}
+          name="user_email"
+          rules={[{ required: true, message: "Please enter your Email!" }]}
           className="auth-form-item"
         >
           <Input placeholder="Enter Email" prefix={<MailOutlined />} />
@@ -80,8 +80,8 @@ const SignUpForm = () => {
         <div className="flex justify-between w-100 gap-8">
           <Form.Item
             label="Create Password"
-            name="password"
-            rules={[{ required: true }]}
+            name="user_pass"
+            rules={[{ required: true, message: "Please enter your Password!" }]}
             className="auth-form-item"
           >
             <Input.Password
@@ -92,8 +92,8 @@ const SignUpForm = () => {
 
           <Form.Item
             label="Re-enter Password"
-            name="Confirm Password"
-            rules={[{ required: true }]}
+            name="confirm_pass"
+            rules={[{ required: true, message: "Please enter your Confirm Password!" }]}
             className="auth-form-item"
           >
             <Input.Password
