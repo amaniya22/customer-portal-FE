@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { clearAuth, setAuth } from "../redux/slices/userAuthSlice";
 
 const AuthContext = createContext();
 
@@ -8,18 +10,28 @@ export const useAuth = () => {
 };
 
 const AuthProvider = ({ children }) => {
+  const dispatch = useDispatch();
+
   const [user, setUser] = useState(null);
-  const [accesstoken, setAccessToken] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [accessToken, setAccessToken] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const login = async ({ username, password }) => {
     try {
-      const res = await axios.post("/auth/login", { username, password });
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_BASE_URL}/auth/login`,
+        { username, password },
+        { withCredentials: true }
+      );
 
       setUser(res.data.user);
-      setAccessToken(res.data.accesstoken);
+      setAccessToken(res.data.accessToken);
 
-      return { success: true };
+      dispatch(
+        setAuth({ user: res.data.user, accessToken: res.data.accessToken })
+      );
+
+      return { success: true, role: res.data.user.user_role };
     } catch (err) {
       console.error("Login failed", err);
       return {
@@ -29,31 +41,31 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  const logout = async () => {
-    try {
-      await axios.post("/auth/logout");
-    } catch (err) {
-      console.error("Logout failes", err);
-    } finally {
-      setUser(null);
-      setAccessToken(null);
-    }
-  };
-
   const refreshToken = async () => {
+    setLoading(true);
     try {
-      const res = await axios.post("/api/auth/refresh-token", {
-        withCredentials: true,
-      });
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_BASE_URL}/auth/refresh-token`,
+        {},
+        {
+          withCredentials: true,
+        }
+      );
 
       setUser(res.data.user);
-      setAccessToken(res.data.accesstoken);
+      setAccessToken(res.data.accessToken);
+
+      dispatch(
+        setAuth({ user: res.data.user, accessToken: res.data.accessToken })
+      );
 
       return { success: true };
     } catch (err) {
-      console.log(err)
+      console.log(err);
       setUser(null);
       setAccessToken(null);
+      dispatch(clearAuth());
+      return { success: false };
     } finally {
       setLoading(false);
     }
@@ -63,18 +75,12 @@ const AuthProvider = ({ children }) => {
     refreshToken();
   }, []);
 
-  const isAdmin = () => user?.role === "admin";
-  const isCustomer = () => user?.role === "customer";
-
   return (
     <AuthContext.Provider
       value={{
         user,
-        accesstoken,
+        accessToken,
         login,
-        logout,
-        isAdmin,
-        isCustomer,
         loading,
       }}
     >

@@ -1,20 +1,25 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { Navigate } from 'react-router-dom';
-import PATHS from './path';
+import React from "react";
+import { Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useAuth } from "./authContext";
+import PATHS from "./path";
 
-const ProtectedRoute = ({children, requireAdmin=false}) => {
-    const user = useSelector(s => s.userAuth?.user);
+const ProtectedRoute = ({ children, allow = ["customer", "admin"] }) => {
+  const { loading } = useAuth();
+  const user = useSelector((state) => state.userAuth?.user);
+  const role = user?.user_role;
 
-    if(!user) {
-        return <Navigate to={PATHS.HOME} replace />
-    }
+  console.log(user);
 
-    if(requireAdmin && user.user_role !== 'admin') {
-        return <Navigate to={PATHS.LOGIN} replace />
-    }
+  if(loading) {
+    return <h1>Loading ...</h1>
+  }
 
-  return children
-}
+  if (!user || !allow.includes(role)) {
+    return <Navigate to={PATHS.LOGIN} replace />;
+  }
 
-export default ProtectedRoute
+  return children;
+};
+
+export default ProtectedRoute;

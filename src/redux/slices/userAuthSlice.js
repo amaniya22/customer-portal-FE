@@ -60,6 +60,10 @@ const userAuthSlice = createSlice({
     error: null,
   },
   reducers: {
+    setAuth: (state, action) => {
+      state.user = action.payload.user;
+      state.accessToken = action.payload.accessToken || null;
+    },
     clearAuth(state) {
       state.user = null;
       state.accessToken = null;
@@ -86,6 +90,7 @@ const userAuthSlice = createSlice({
         state.status = "registered";
       })
       .addCase(loginUserThunk.fulfilled, (state, action) => {
+        state.status = "success";
         state.user = action.payload.user;
         state.accessToken = action.payload.accessToken;
       })
@@ -96,5 +101,5 @@ const userAuthSlice = createSlice({
   },
 });
 
-export const { clearAuth } = userAuthSlice.actions;
+export const { setAuth, clearAuth } = userAuthSlice.actions;
 export default userAuthSlice.reducer;
