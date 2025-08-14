@@ -4,5 +4,6 @@
 @use './variables.scss';
 
 // Pages stylesheets
-@use './home.scss';
-@use './signUp.scss';
+@use './pages/home.scss';
+@use './pages/signUp.scss';
+@use './pages/products.scss';

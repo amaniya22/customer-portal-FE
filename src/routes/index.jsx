@@ -6,6 +6,7 @@ import ProtectedRoute from "./protectedRoutes.jsx";
 import Home from "../pages/Home/index.jsx";
 import SignUp from "../pages/SignUp/index.jsx";
 import Dashboard from "../pages/Dashboard/index.jsx";
+import Products from "../pages/Products/index.jsx";
 
 const Router = () => {
   return (
@@ -24,6 +25,9 @@ const Router = () => {
           </ProtectedRoute>
         }
       />
+      <Route path={PATHS.PRODUCTS} element={<ProtectedRoute>
+            <Products />
+          </ProtectedRoute>} />
     </Routes>
   );
 };

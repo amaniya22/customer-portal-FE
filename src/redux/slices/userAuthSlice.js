@@ -3,9 +3,9 @@ import api from "../../api/api";
 
 export const refreshTokenThunk = createAsyncThunk(
   "/auth/refresh-token",
-  async (refreshToken, { rejectWithValue }) => {
+  async (_, { rejectWithValue }) => {
     try {
-      const res = await api.post("/auth/refresh-token", refreshToken, {
+      const res = await api.post("/auth/refresh-token", {}, {
         withCredentials: true,
       }); //automatically sends cookie
       return res.data;

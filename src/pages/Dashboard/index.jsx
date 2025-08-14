@@ -1,7 +1,7 @@
 import React from "react";
 import { logoutUserThunk } from "../../redux/slices/userAuthSlice.js";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../routes/authContext.jsx";
 import Button from "../../components/buttons.jsx";
 import PATHS from "../../routes/path.js";
@@ -46,6 +46,11 @@ const Dashboard = () => {
       ) : (
         <h1>Please Login</h1>
       )}
+      <div>
+        <Link to={PATHS.PRODUCTS}>
+          <p>Check Products</p>
+        </Link>
+      </div>
       <Button btnText="logout" onClickHandler={handleLogout} />
     </div>
   );

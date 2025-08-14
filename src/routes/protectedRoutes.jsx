@@ -1,18 +1,25 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { useAuth } from "./authContext";
+import { useDispatch, useSelector } from "react-redux";
 import PATHS from "./path";
+import { useEffect } from "react";
+import { refreshTokenThunk } from "../redux/slices/userAuthSlice";
 
 const ProtectedRoute = ({ children, requiredRole }) => {
-  const { loading } = useAuth();
   const user = useSelector((state) => state.userAuth?.user);
+  const { status } = useSelector((state) => state.userAuth?.status);
   const role = user?.user_role;
 
-  console.log(user);
+  const dispatch = useDispatch();
 
-  if (loading) {
-    return <h1>Loading ...</h1>
+  useEffect(() => {
+    if (!user) {
+      dispatch(refreshTokenThunk());
+    }
+  }, [user, dispatch]);
+
+  if (status === 'loading') {
+    return <h1>Loading ...</h1>;
   }
 
   if (!user) {
@@ -20,7 +27,7 @@ const ProtectedRoute = ({ children, requiredRole }) => {
   }
 
   if (requiredRole && role !== requiredRole) {
-    return <Navigate to={PATHS.DASHBOARD} replace />
+    return <Navigate to={PATHS.DASHBOARD} replace />;
   }
 
   return children;
