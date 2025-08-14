@@ -5,7 +5,9 @@ export const refreshTokenThunk = createAsyncThunk(
   "/auth/refresh-token",
   async (refreshToken, { rejectWithValue }) => {
     try {
-      const res = await api.post("/auth/refresh-token", refreshToken); //automatically sends cookie
+      const res = await api.post("/auth/refresh-token", refreshToken, {
+        withCredentials: true,
+      }); //automatically sends cookie
       return res.data;
     } catch (err) {
       return rejectWithValue(err.response?.data || { message: err.message });

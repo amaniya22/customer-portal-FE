@@ -4,19 +4,23 @@ import { useSelector } from "react-redux";
 import { useAuth } from "./authContext";
 import PATHS from "./path";
 
-const ProtectedRoute = ({ children, allow = ["customer", "admin"] }) => {
+const ProtectedRoute = ({ children, requiredRole }) => {
   const { loading } = useAuth();
   const user = useSelector((state) => state.userAuth?.user);
   const role = user?.user_role;
 
   console.log(user);
 
-  if(loading) {
+  if (loading) {
     return <h1>Loading ...</h1>
   }
 
-  if (!user || !allow.includes(role)) {
+  if (!user) {
     return <Navigate to={PATHS.LOGIN} replace />;
+  }
+
+  if (requiredRole && role !== requiredRole) {
+    return <Navigate to={PATHS.DASHBOARD} replace />
   }
 
   return children;

@@ -10,13 +10,11 @@ import CustomerDashboard from "./customerDashboard/customerDashboard.jsx";
 
 const Dashboard = () => {
   const { loading } = useAuth();
-  const userLogged = useSelector((state) => state.userAuth?.user);
-  const role = userLogged?.user_role;
+  const user = useSelector((state) => state.userAuth?.user);
+  const role = user?.user_role;
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  console.log(userLogged);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -37,12 +35,12 @@ const Dashboard = () => {
     <div>
       {role === "customer" ? (
         <>
-          <h1>Hi {userLogged.user_fname}</h1>
+          <h1>Hi {user.user_fname}</h1>
           <CustomerDashboard />
         </>
       ) : role === "admin" ? (
         <>
-          <h1>Hi Admin {userLogged.user_fname}</h1>
+          <h1>Hi Admin {user.user_fname}</h1>
           <AdminDashboard />
         </>
       ) : (

@@ -4,7 +4,8 @@ const PATHS = {
     LOGIN: '/auth/login',
     SIGNUP: '/auth/sign-up',
     FORGOTPASSWORD: '/auth/forgot-password',
-    DASHBOARD: '/dashboard'
+    DASHBOARD: '/dashboard',
+    PRODUCTS: '/products'
 }
 
 export default PATHS;
