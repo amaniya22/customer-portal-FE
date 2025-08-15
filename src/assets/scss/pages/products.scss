@@ -1,0 +1,28 @@
+@use '../mixins.scss' as *;
+@use '../variables.scss' as *;
+
+.products-detail-container {
+    .product-d-img-carousel {
+        height: 500px;
+        width: 500px;
+    }
+}
+
+.products-pg-container {
+    .product-card {
+        box-shadow: 0px 1px 4px $black-opacity-25;
+        width: 325px;
+
+        .ant-card-body {
+            padding: 8px 8px 20px;
+
+            .prod-name {
+                @include font-properties(600, 18px)
+            }
+        }
+    }
+
+    .products-pg-title {
+        @include font-properties(700, 32px)
+    }
+}

@@ -1,0 +1,16 @@
+@use '../mixins.scss' as *;
+@use '../variables.scss' as *;
+
+.home-pg-container {
+    .home-descp {
+        @include font-properties(500, 16px);
+    }
+
+    .home-title {
+        @include font-properties(900, 64px);
+
+        .home-title-highlight {
+            color: $dark-blue-1;
+        }
+    }
+}
