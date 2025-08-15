@@ -37,7 +37,7 @@ The application follows a modular architecture with a clear separation between f
 
 ## Features Implemented
 
-### User & Authentication
+## User & Authentication
 - User registration and login (JWT-based authentication with refresh tokens)  
 - Role-based access control (Admin vs Customer)  
 - Protected routes in frontend and backend based on roles  
@@ -97,29 +97,29 @@ npm install
 ---
 
 ## Environment Variables
-# API endpoint of the backend
+## API endpoint of the backend
 VITE_API_URL=http://localhost:5000/api
 
-# Running the Application
+## Running the Application
 npm run dev
 
-# Create a .env file in the backend folder:
+## Create a .env file in the backend folder:
 PORT=5000
 DB_HOST=localhost
 DB_PORT=5432
 DB_USER=your_db_username
 DB_PASSWORD=your_db_password
 DB_NAME=product_feedback
-# or use a single DATABASE_URL
-# DATABASE_URL=postgresql://user:pass@localhost:5432/product_feedback
+### or use a single DATABASE_URL
+### DATABASE_URL=postgresql://user:pass@localhost:5432/product_feedback
 JWT_SECRET=your_jwt_secret
 JWT_REFRESH_SECRET=your_refresh_jwt_secret
 
-# Database Setup
-# Ensure PostgreSQL is running and you have permissions to create a database
+## Database Setup
+## Ensure PostgreSQL is running and you have permissions to create a database
 
-# 1. Create the database
+## 1. Create the database
 createdb product_feedback
 
-# Start backend server
+## Start backend server
 npm run dev
