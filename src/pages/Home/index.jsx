@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../../components/buttons";
-import { PortaImages } from "../../assets/img";
+import { PortalImages } from "../../assets/img";
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -34,7 +34,7 @@ const Home = () => {
         </div>
         <div className="w-1/2">
           <img
-            src={PortaImages.HomeImages.HomePGImage}
+            src={PortalImages.HomeImages.HomePGImage}
             alt="home-banner-image"
           />
         </div>

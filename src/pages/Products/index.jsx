@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProductsThunk } from "../../redux/slices/productSlice";
 import { Card, Tooltip } from "antd";
-import { PortaImages } from "../../assets/img";
+import { PortalImages } from "../../assets/img";
 import { useNavigate } from "react-router-dom";
 
 const Products = () => {
@@ -31,8 +31,8 @@ const Products = () => {
   };
 
   return (
-    <div className="products-pg-container h-auto min-h-screen flex flex-col items-center bg-white">
-      <p className="text-black m-2 products-pg-title">Review Our Products</p>
+    <div className="products-pg-container h-auto min-h-screen flex flex-col items-center bg-white p-4 sm:p-6 lg:p-8">
+      <p className="text-gray-800 products-pg-title mb-10">Review Our Products</p>
       <div className="flex gap-14 flex-wrap mx-2 justify-center">
         {products.length === 0 ? (
           <p>No products found.</p>
@@ -51,12 +51,12 @@ const Products = () => {
                 <div>
                   <img
                     src={
-                      images[0] || PortaImages.ProductImages.PlaceholderProdImg
+                      images[0] || PortalImages.ProductImages.PlaceholderProdImg
                     }
                     alt="product-image"
                     onError={(e) =>
                       (e.target.src =
-                        PortaImages.ProductImages.PlaceholderProdImg)
+                        PortalImages.ProductImages.PlaceholderProdImg)
                     }
                     className="rounded-md mb-4"
                   />

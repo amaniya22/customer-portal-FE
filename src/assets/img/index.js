@@ -4,7 +4,7 @@ import HomePGImage from './common/home-pg-img.png';
 
 import PlaceholderProdImg from './common/placeholder-prod-img.jpg';
 
-export const PortaImages = {
+export const PortalImages = {
     AuthPGImage: {
         AuthPGImage
     },

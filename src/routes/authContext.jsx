@@ -61,7 +61,6 @@ const AuthProvider = ({ children }) => {
 
       return { success: true };
     } catch (err) {
-      console.log(err);
       setUser(null);
       setAccessToken(null);
       dispatch(clearAuth());

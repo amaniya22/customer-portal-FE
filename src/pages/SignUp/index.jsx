@@ -1,5 +1,5 @@
 import React from "react";
-import { PortaImages } from "../../assets/img/index.js";
+import { PortalImages } from "../../assets/img/index.js";
 import PATHS from "../../routes/path.js";
 import LoginForm from "./LoginForm/loginForm.jsx";
 import SignUpForm from "./SignUpForm/signUpForm.jsx";
@@ -12,7 +12,7 @@ const SignUp = () => {
         <div className="auth-form-section rounded-3xl flex">
           <div className="auth-img-div rounded-l-3xl content-center">
             <img
-              src={PortaImages.AuthPGImage.AuthPGImage}
+              src={PortalImages.AuthPGImage.AuthPGImage}
               alt="banner-image"
               className="rounded-l-3xl"
             />
