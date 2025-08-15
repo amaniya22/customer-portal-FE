@@ -42,7 +42,7 @@ The application follows a modular architecture with a clear separation between f
 - Role-based access control (Admin vs Customer)  
 - Protected routes in frontend and backend based on roles  
 
-### Products
+## Products
 - Product listing page with all products displayed  
 - Individual product detail page showing:
   - Product name, description, price  
@@ -50,7 +50,7 @@ The application follows a modular architecture with a clear separation between f
   - Average customer rating  
 - Admin can add, update, and delete products  
 
-### Feedback & Reviews
+## Feedback & Reviews
 - Customers can submit feedback:
   - Star rating  
   - Comment text  
@@ -59,25 +59,25 @@ The application follows a modular architecture with a clear separation between f
 - Average rating calculation displayed on product detail page  
 - Admin moderation of feedback (approve, reject, delete)  
 
-### UI & UX
+## UI & UX
 - Responsive layout for desktop and mobile (TailwindCSS)  
 - Loading states and error handling displayed gracefully  
 - Carousel for product images (Ant Design Carousel)  
 - Feedback cards with images and comments  
 
-### Backend & Database
+## Backend & Database
 - PostgreSQL database with proper schema for products, feedback, and users  
 - Migrations and seed data support  
 - Secure storage of user passwords (hashed)  
 - REST API endpoints for products, feedback, and user authentication  
 - Image handling: store images as Base64 or file path references  
 
-### State Management
+## State Management
 - Redux Toolkit slices for managing product, feedback, and user state  
 - Centralized handling of async API calls  
 - Redux store connected with React components for reactive UI  
 
-### Testing & Coverage
+## Testing & Coverage
 - Backend and frontend unit tests  
 - Coverage reports for both frontend and backend
 
