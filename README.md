@@ -82,13 +82,13 @@ The application follows a modular architecture with a clear separation between f
 - Coverage reports for both frontend and backend
 
 ---
-
+```bash
 ## Installation
-# 1. Clone the repository
+## 1. Clone the repository
 git clone https://github.com/your-username/product-feedback-portal.git
 cd product-feedback-portal
 
-# 2. Install dependencies
+## 2. Install dependencies
 cd frontend
 npm install
 cd ../backend
@@ -116,7 +116,7 @@ JWT_SECRET=your_jwt_secret
 JWT_REFRESH_SECRET=your_refresh_jwt_secret
 
 ## Database Setup
-## Ensure PostgreSQL is running and you have permissions to create a database
+#### Ensure PostgreSQL is running and you have permissions to create a database
 
 ## 1. Create the database
 createdb product_feedback
