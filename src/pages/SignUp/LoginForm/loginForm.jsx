@@ -31,14 +31,14 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="auth-form-content mt-10 flex items-center flex-col w-100">
+    <div className="auth-form-content mt-10 flex items-center flex-col w-full px-15">
       <p className="m-0 mb-8 text-black auth-form-title">Login</p>
 
       <Form
         name="login"
         initialValues={{ remember: true }}
         layout="vertical"
-        className="w-100"
+        className="w-full"
         form={form}
       >
         <Form.Item
@@ -80,7 +80,7 @@ const LoginForm = () => {
         <Form.Item className="text-center auth-form-item">
           <Button
             btnText="Login"
-            className="btn-primary-blue rounded-md text-white w-100 mb-4 flex justify-center"
+            className="btn-primary-blue rounded-md text-white w-full mb-4 flex justify-center"
             onClickHandler={handleSubmitLogForm}
           />
           or{" "}

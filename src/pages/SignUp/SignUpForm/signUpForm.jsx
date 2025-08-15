@@ -37,10 +37,10 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className="auth-form-content mt-10 flex items-center flex-col w-100">
+    <div className="auth-form-content mt-10 flex items-center flex-col w-full px-15">
       <p className="m-0 text-black auth-form-title mb-4 text-center">Sign Up</p>
 
-      <Form layout="vertical" className="w-100 flex-col" form={form}>
+      <Form layout="vertical" className="w-full flex-col" form={form}>
         <Form.Item
           label="Enter Username"
           name="username"
@@ -77,7 +77,7 @@ const SignUpForm = () => {
           <Input placeholder="Enter Email" prefix={<MailOutlined />} />
         </Form.Item>
 
-        <div className="flex justify-between w-100 gap-8">
+        <div className="flex justify-between w-full gap-8">
           <Form.Item
             label="Create Password"
             name="user_pass"
@@ -106,7 +106,7 @@ const SignUpForm = () => {
         <Form.Item className="text-center auth-form-item">
           <Button
             btnText="Sign Up"
-            className="btn-primary-blue rounded-md text-white w-100 my-4 flex justify-center"
+            className="btn-primary-blue rounded-md text-white w-full my-4 flex justify-center"
             onClickHandler={handleRegForm}
           />
           Already have an account!{" "}

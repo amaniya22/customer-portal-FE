@@ -7,14 +7,14 @@ import PATHS from "../../../routes/path";
 
 const ForgotPassword = () => {
   return (
-    <div className="auth-form-content mt-10 flex items-center flex-col w-100">
+    <div className="auth-form-content mt-10 flex items-center flex-col w-full px-15">
       <p className="m-0 mb-8 text-black auth-form-title">Reset Password</p>
 
       <Form
         name="login"
         initialValues={{ remember: true }}
         layout="vertical"
-        className="w-100"
+        className="w-full"
       >
         <Form.Item
           label="New Password"
@@ -43,7 +43,7 @@ const ForgotPassword = () => {
         <Form.Item className="text-center auth-form-item">
           <Button
             btnText="Reset Password"
-            className="btn-primary-blue rounded-md text-white w-100 my-4 flex justify-center"
+            className="btn-primary-blue rounded-md text-white w-full my-4 flex justify-center"
           />
           <Link to={PATHS.LOGIN}>
             <a href="" className="auth-form-link">

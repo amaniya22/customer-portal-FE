@@ -5,7 +5,8 @@ const PATHS = {
     SIGNUP: '/auth/sign-up',
     FORGOTPASSWORD: '/auth/forgot-password',
     DASHBOARD: '/dashboard',
-    PRODUCTS: '/products'
+    PRODUCTS: '/products',
+    PRODUCTDETAILS: '/products/:id',
 }
 
 export default PATHS;

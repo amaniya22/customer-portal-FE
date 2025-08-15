@@ -18,7 +18,7 @@ const ProtectedRoute = ({ children, requiredRole }) => {
     }
   }, [user, dispatch]);
 
-  if (status === 'loading') {
+  if (status === 'loading' || status === 'idle') {
     return <h1>Loading ...</h1>;
   }
 

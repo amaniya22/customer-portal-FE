@@ -1,6 +1,13 @@
 @use '../mixins.scss' as *;
 @use '../variables.scss' as *;
 
+.products-detail-container {
+    .product-d-img-carousel {
+        height: 500px;
+        width: 500px;
+    }
+}
+
 .products-pg-container {
     .product-card {
         box-shadow: 0px 1px 4px $black-opacity-25;
@@ -16,6 +23,7 @@
     }
 
     .products-pg-title {
+        color: $dark-blue-1;
         @include font-properties(700, 32px)
     }
 }

@@ -8,7 +8,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(refreshTokenThunk);
+    dispatch(refreshTokenThunk());
   }, [dispatch]);
   
   return (

@@ -3,12 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllProductsThunk } from "../../redux/slices/productSlice";
 import { Card, Tooltip } from "antd";
 import { PortaImages } from "../../assets/img";
+import { useNavigate } from "react-router-dom";
 
 const Products = () => {
   const dispatch = useDispatch();
   const { products, status, error } = useSelector(
     (state) => state.products || {}
   );
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getProdData = async () => {
@@ -28,9 +31,9 @@ const Products = () => {
   };
 
   return (
-    <div className="products-pg-container h-auto min-h-screen flex flex-col items-start bg-white">
+    <div className="products-pg-container h-auto min-h-screen flex flex-col items-center bg-white">
       <p className="text-black m-2 products-pg-title">Review Our Products</p>
-      <div className="flex gap-4 flex-wrap mx-2">
+      <div className="flex gap-14 flex-wrap mx-2 justify-center">
         {products.length === 0 ? (
           <p>No products found.</p>
         ) : (
@@ -40,12 +43,21 @@ const Products = () => {
             );
 
             return (
-              <Card key={product.product_id} className="product-card cursor-pointer">
+              <Card
+                key={product.product_id}
+                className="product-card cursor-pointer"
+                onClick={() => navigate(`/products/${product.product_id}`)}
+              >
                 <div>
                   <img
-                    src={images[0] || PortaImages.ProductImages.PlaceholderProdImg}
+                    src={
+                      images[0] || PortaImages.ProductImages.PlaceholderProdImg
+                    }
                     alt="product-image"
-                    onError={(e) => e.target.src = PortaImages.ProductImages.PlaceholderProdImg}
+                    onError={(e) =>
+                      (e.target.src =
+                        PortaImages.ProductImages.PlaceholderProdImg)
+                    }
                     className="rounded-md mb-4"
                   />
                 </div>
