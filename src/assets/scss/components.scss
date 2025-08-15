@@ -1,0 +1,34 @@
+@use "./variables.scss" as *;
+@use "./mixins.scss" as *; 
+
+// Buttons
+.btn-primary-blue {
+    background-color: $dark-blue-2;
+    @include font-properties(500, 16px);
+
+    &:focus,
+    &:focus-visible {
+        outline: none;
+    }
+
+    &:hover {
+        background-color: lighten($dark-blue-2, 10%);
+    }
+}
+
+.btn-primary-blue-outline {
+    background-color: transparent;
+    border-color: $dark-blue-2;
+    color: $dark-blue-2;
+    @include font-properties(500, 16px);
+
+    &:focus,
+    &:focus-visible {
+        outline: none;
+    }
+
+    &:hover {
+        border-color: lighten($dark-blue-2, 10%);
+        color: lighten($dark-blue-2, 10%);
+    }
+}
