@@ -1,5 +1,11 @@
 import axios from "axios";
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { useDispatch } from "react-redux";
 import { clearAuth, setAuth } from "../redux/slices/userAuthSlice";
 
@@ -41,7 +47,7 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  const refreshToken = async () => {
+  const refreshToken = useCallback(async () => {
     setLoading(true);
     try {
       const res = await axios.post(
@@ -64,15 +70,16 @@ const AuthProvider = ({ children }) => {
       setUser(null);
       setAccessToken(null);
       dispatch(clearAuth());
+      console.error("Token refresh failed", err);
       return { success: false };
     } finally {
       setLoading(false);
     }
-  };
+  }, [dispatch]);
 
   useEffect(() => {
     refreshToken();
-  }, []);
+  }, [refreshToken]);
 
   return (
     <AuthContext.Provider
