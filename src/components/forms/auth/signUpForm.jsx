@@ -10,7 +10,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useForm } from "antd/es/form/Form";
 import { registerUserThunk } from "../../../redux/slices/userAuthSlice";
-import Button from "../../../components/buttons";
+import Button from "../../buttons";
 import PATHS from "../../../routes/path";
 
 const SignUpForm = () => {

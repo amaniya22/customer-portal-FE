@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { getProductById } from "../../../redux/slices/productSlice";
 import { PortalImages } from "../../../assets/img";
 import Button from "../../../components/buttons";
+import AddFeedbackForm from "../../../components/forms/addFeedbackForm";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -139,57 +140,7 @@ const ProductDetail = () => {
             </div> */}
 
             {/* Submit Feedback Section */}
-            <div className="bg-white p-6 rounded-lg shadow-md mt-6">
-              <h4 className="text-xl font-semibold text-gray-800 mb-4">
-                Submit Your Feedback
-              </h4>
-
-              {/* Rating */}
-              <div className="mb-4">
-                <label className="block text-gray-700 mb-2">Rating</label>
-                <div className="flex gap-1 text-2xl cursor-pointer">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <span
-                      key={star}
-                      className="hover:text-yellow-500 text-gray-400 transition-colors"
-                    >
-                      ⭐
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Comment */}
-              <div className="mb-4">
-                <label className="block text-gray-700 mb-2">Comment</label>
-                <textarea
-                  placeholder="Share your experience..."
-                  className="w-full border rounded-lg p-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500"
-                  rows={4}
-                ></textarea>
-              </div>
-
-              {/* Image Upload */}
-              <div className="mb-4">
-                <label className="block text-gray-700 mb-2">
-                  Upload Images (optional)
-                </label>
-                <input
-                  type="file"
-                  multiple
-                  accept="image/*"
-                  className="block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4
-                  file:rounded-lg file:border-0 file:text-sm file:font-semibold
-                  file:bg-green-50 file:text-green-600 hover:file:bg-green-100"
-                />
-              </div>
-
-              {/* Submit Button */}
-              <Button
-                btnText="Submit Feedback"
-                className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors w-full justify-center"
-              />
-            </div>
+            <AddFeedbackForm />
           </div>
         </div>
       </div>

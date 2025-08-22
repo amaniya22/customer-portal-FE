@@ -1,9 +1,9 @@
 import React from "react";
 import { PortalImages } from "../../assets/img/index.js";
 import PATHS from "../../routes/path.js";
-import LoginForm from "./LoginForm/loginForm.jsx";
-import SignUpForm from "./SignUpForm/signUpForm.jsx";
-import ForgotPassword from "./ForgotPassword/forgotPassword.jsx";
+import ForgotPassword from "../../components/forms/auth/forgotPassword.jsx";
+import LoginForm from "../../components/forms/auth/loginForm.jsx";
+import SignUpForm from "../../components/forms/auth/signUpForm.jsx";
 
 const SignUp = () => {
   return (
