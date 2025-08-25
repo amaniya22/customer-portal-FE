@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import PATHS from "./path";
 import { useEffect } from "react";
 import { refreshTokenThunk } from "../redux/slices/userAuthSlice";
+import LoadingSpinner from "../components/loadingSpinner";
 
 const ProtectedRoute = ({ children, requiredRole }) => {
   const [triedRefresh, setTriedRefresh] = useState(false);
@@ -22,7 +23,7 @@ const ProtectedRoute = ({ children, requiredRole }) => {
   }, [user, dispatch, triedRefresh]);
 
   if (status === 'loading' || status === 'idle') {
-    return <h1>Loading ...</h1>;
+    return <LoadingSpinner />;
   }
 
   if (!user) {

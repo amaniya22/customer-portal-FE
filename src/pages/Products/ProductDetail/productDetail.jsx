@@ -5,6 +5,7 @@ import { getProductById } from "../../../redux/slices/productSlice";
 import { PortalImages } from "../../../assets/img";
 import Button from "../../../components/buttons";
 import AddFeedbackForm from "../../../components/forms/addFeedbackForm";
+import LoadingSpinner from "../../../components/loadingSpinner";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -20,7 +21,7 @@ const ProductDetail = () => {
     }
   }, [dispatch, id]);
 
-  if (status === "loading") return <p>Loading...</p>;
+  if (status === "loading") return <LoadingSpinner />;
   if (status === "failed") return <p>{error}</p>;
 
   if (!productSelected) return <p>Product not found</p>;
