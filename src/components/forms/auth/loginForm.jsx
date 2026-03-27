@@ -4,7 +4,7 @@ import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginUserThunk } from "../../../redux/slices/userAuthSlice";
-import Button from "../../../components/buttons";
+import Button from "../../buttons";
 import PATHS from "../../../routes/path";
 
 const LoginForm = () => {

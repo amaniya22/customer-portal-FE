@@ -7,6 +7,7 @@ import Button from "../../components/buttons.jsx";
 import PATHS from "../../routes/path.js";
 import AdminDashboard from "./adminDashboard/adminDashboard.jsx";
 import CustomerDashboard from "./customerDashboard/customerDashboard.jsx";
+import LoadingSpinner from "../../components/loadingSpinner.jsx";
 
 const Dashboard = () => {
   const { loading } = useAuth();
@@ -17,7 +18,7 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <LoadingSpinner />;
   }
 
   const handleLogout = async () => {

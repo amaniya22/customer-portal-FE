@@ -2,7 +2,7 @@ import React from "react";
 import { Form, Input } from "antd";
 import { LockOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-import Button from "../../../components/buttons";
+import Button from "../../buttons";
 import PATHS from "../../../routes/path";
 
 const ForgotPassword = () => {

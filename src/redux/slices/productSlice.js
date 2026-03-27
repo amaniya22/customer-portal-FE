@@ -5,7 +5,7 @@ export const getAllProductsThunk = createAsyncThunk(
   "/products",
   async (_, { rejectWithValue }) => {
     try {
-      const res = await api.get("/products", {
+      const res = await api.get("/products/", {
         withCredentials: true,
       });
       return res.data;
@@ -19,7 +19,7 @@ export const getProductById = createAsyncThunk(
   "/products/:id",
   async (id, { rejectWithValue }) => {
     try {
-      const res = await api.get(`/products/${id}`, { withCredentials: true });
+      const res = await api.get(`/products/product/${id}`, { withCredentials: true });
       return res.data;
     } catch (err) {
       return rejectWithValue(err.response?.data || { message: err.message });
